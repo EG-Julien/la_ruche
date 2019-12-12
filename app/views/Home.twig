@@ -1,0 +1,164 @@
+{% extends 'Template.twig' %}
+
+{% block content %}
+    <div class="header shuffle-over-transition">
+      <div class="background">
+        <img src="/images/poly2.jpg" alt="">
+      </div>
+      <div class="header-wrapper row valign-wrapper">
+        <div class="col s12">
+          <h1>Kariboo</h1>
+          <span class="tagline">From jack speakers to Wifi controled speakers.</span>
+          <button class="read-more"><i class="icon-caret-down"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="section black valign-wrapper shuffle-over-transition">
+      <div class="container">
+        <div class="row">
+          <div class="col s12"><h2 class="section-title">Features</h2></div>
+          <div class="col s12 m6 l4">
+            <h4><i class="icon-light-bulb"></i></h4>
+            <p class="caption">Easy integration of our audio solutions in your own project.</p>
+          </div>
+          <div class="col s12 m6 l4">
+            <h4><i class="icon-bolt"></i></h4>
+            <p class="caption">Different sizes of battery to keep music with your client everywhere anytime.</p>
+          </div>
+          <div class="col s12 m6 l4">
+            <h4><i class="icon-rocket"></i></h4>
+            <p class="caption">Jack, Bluetooth, AirPlay, Spotify Connect, Wifi : up to your choice.</p>
+          </div>
+          <div class="col s12 m6 l4">
+            <h4><i class="icon-settings"></i></h4>
+            <p class="caption">4" Driver, 1" Tweeter and 4" Passive Radiator to create the best audio resitution.</p>
+          </div>
+          <div class="col s12 m6 l4">
+            <h4><i class="icon-umbrella"></i></h4>
+            <p class="caption">Our systems are protected with speacial spray paint that resist to difficult weather.</p>
+          </div>
+          <div class="col s12 m6 l4">
+            <h4><i class="icon-compass"></i></h4>
+            <p class="caption">If you have speacial need let us know ! We're here to prototype your idea.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog -->
+    <div class="section light full-height">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 center">
+            <h1>it's look like this</h1>
+            <div class="row masonry-grid">
+              <div class="col s12 m12 l12">
+                <div class="card">
+                  <div class="card-image">
+                    <a href="blog.html"><img src="image/poly1.jpg"></a>
+                    <span class="card-title">Jack &amp; Bluetooth solution</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Tables -->
+    <div class="section black valign-wrapper shuffle-under-transition">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="pricing-table">
+              <div class="pricing-header">
+                <i class="icon-paper-plane"></i>
+                <h4>Basic</h4>
+                <div class="price">
+                  <span class="currency">€</span>
+                  <span class="dollars">249</span>
+                  <span class="cents">99</span>
+                </div>
+              </div>
+              <ul class="pricing-features">
+                <li class="pricing-feature"><i class="icon-accept"></i>4" Driver, 1" Tweeter and 4" passive radiator speaker.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Bluetooth 4.2 and 100W Amplification board.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Optional battery pack.</li>
+                <li class="pricing-feature disabled"><i class="icon-close"></i>Pro and above.</li>
+                <li class="pricing-feature disabled"><i class="icon-close"></i>Enterprise only.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col s12 m4">
+            <div class="pricing-table featured">
+              <div class="pricing-header">
+                <i class="icon-plane"></i>
+                <h4>Pro</h4>
+                <div class="price">
+                  <span class="currency">€</span>
+                  <span class="dollars">349</span>
+                  <span class="cents">99</span>
+                </div>
+              </div>
+              <ul class="pricing-features">
+                <li class="pricing-feature"><i class="icon-accept"></i>4" Driver, 1" Tweeter and 4" passive radiator speaker.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Bluetooth 4.2 and 100W Amplification board.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Optional battery pack.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Integrated Wifi wich support Online Streaming, Airplay, DLNA.</li>
+                <li class="pricing-feature disabled"><i class="icon-close"></i>Enterprise only.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col s12 m4">
+            <div class="pricing-table">
+              <div class="pricing-header">
+                <i class="icon-rocket"></i>
+                <h4>Enterprise</h4>
+                <div class="price">
+                  <span class="currency">€</span>
+                  <span class="dollars">On request</span>
+                </div>
+              </div>
+              <ul class="pricing-features">
+                <li class="pricing-feature"><i class="icon-accept"></i>4" Driver, 1" Tweeter and 4" passive radiator speaker.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Bluetooth 4.2 and 100W Amplification board.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Optional battery pack.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Integrated Wifi wich support Online Streaming, Airplay, DLNA.</li>
+                <li class="pricing-feature"><i class="icon-accept"></i>Make your dream come true.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="section light shuffle-under-transition valign-wrapper" id="contact_form">
+      <div class="container">
+        <form method="post" action="{{ path_for("contact_us_post") }}">
+          <div class="row">
+            <div class="col s12"><h2 class="section-title">Contact Us</h2></div>
+            <div class="input-field col s6">
+              <input id="first_name" type="text" name="name">
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" name="email">
+              <label for="last_name">Last Name</label>
+            </div>
+            <div class="input-field col s12">
+              <textarea id="message" class="materialize-textarea" name="content"></textarea>
+              <label for="message">Message</label>
+              <button class="waves-effect waves-light btn-large">Button</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}
