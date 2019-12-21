@@ -26,11 +26,9 @@ try {
    // $DB = die($e);
 }
 
-$app->get('/', \App\Controllers\HomeCtrl::class . ':Home');
-$app->get('/whoami', \App\Controllers\HomeCtrl::class . ':Whoami')->setName("whoami");
-$app->get('/contact', \App\Controllers\HomeCtrl:: class . ':ContactUs')->setName("contact_us");
-
-$app->get('/projects/{ project_id }', \App\Controllers\ProjectsCtrl::class . ':RenderProjects')->setName("project_render");
+$app->get('/', \App\Controllers\HomeCtrl::class . ':Home')->setName("home");
+$app->get('/qui-sommes-nous', \App\Controllers\HomeCtrl::class . ':Whoareus')->setName("whoareus");
+$app->get('/devis', \App\Controllers\HomeCtrl:: class . ':Devis')->setName("devis");
 
 $app->post('/post/contact-us', \App\Controllers\PostCtrl::class . ':ContactUs')->setName("contact_us_post");
 

@@ -10,8 +10,8 @@ class HomeCtrl extends Controller {
         $this->render($response, "Home.twig");
     }
 
-    public function Whoami($request, $response) {
-        $this->render($response, "Whoami.twig");
+    public function Whoareus($request, $response) {
+        $this->render($response, "Whoareus.twig");
     }
 
     public function ContactUs($request, $response) {

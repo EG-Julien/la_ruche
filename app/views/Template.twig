@@ -3,54 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Kariboo | Analog Electronic</title>
+    <title>La Ruche | Évènementiel à Bordeaux</title>
     <meta name="description" content="Creating specific analog and numeric electronic design for personel and professional uses.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" type="image/jpg" href="images/logo.jpg" />
     <link rel="stylesheet" href="css/startup-materialize.min.css">
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
-      <nav class="navbar absolute">
-      <div class="nav-wrapper">
-        <a href="horizontal-half.html" class="brand-logo"><i class="icon-diamond"></i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li class="active"><a class="dropdown-button" href="#!" data-activates="pages" data-constrainWidth="false" data-belowOrigin="true">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
-          <li><a href="https://blog.kariboo.cc">Blog</a></li>
-          <li><a href="{{ path_for("whoami") }}">Whoami ?</a></li>
-          <li><a href="{{ path_for("contact_us") }}">Contact</a></li>
-        </ul>
-
-        <ul id="pages" class="dropdown-content">
-          <li><a href="{{ path_for('project_render', {'project_id' : 'audio-pro'}) }}">Audio PRO</a></li>
-          <li><a href="{{ path_for('project_render', {'project_id' : 'i-sound-bar-one'}) }}">iSound Bar One</a></li>
-          <li><a href="{{ path_for('project_render', {'project_id' : 'i-lamp'}) }}">iLamp</a></li>
-        </ul>
-
-        <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons white-text">menu</i></a>
-      </div>
-    </nav>
-    <ul id="slide-out" class="side-nav">
-      <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-          <li class="bold">
-            <a class="collapsible-header waves-effect waves-teal active">Projects</a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="{{ path_for('project_render', {'project_id' : 'audio-pro'}) }}">Audio PRO</a></li>
-                <li><a href="{{ path_for('project_render', {'project_id' : 'i-sound-bar-one'}) }}">iSound Bar One</a></li>
-                <li><a href="{{ path_for('project_render', {'project_id' : 'i-lamp'}) }}">iLamp</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
-      <li><a class="waves-effect waves-teal" href="//blog.kariboo.cc">Blog</a></li>
-      <li><a class="waves-effect waves-teal" href="{{ path_for("whoami") }}">Whoami ?</a></li>
-      <li><a class="waves-effect waves-teal" href="">Contact</a></li>
-    </ul>
 {% block content %}
 
 {% endblock %}
@@ -60,30 +23,30 @@
         <div class="row">
           <div class="col s6 m3">
             <img class="materialize-logo" src="images/materialize-teal.png" alt="">
-            <p>Made with love by Materialize.</p>
+            <p>Made with love by Materialize & <a href="https://instagram.com/eg_julien">@eg_julien</a>.</p>
           </div>
           <div class="col s6 m3">
             <h5>About</h5>
             <ul>
-              <li><a href="//blog.kariboo.cc">Blog</a></li>
-              <li><a href="#!">Pricing</a></li>
+              <li><a href="#!">Blog</a></li>
+              <li><a href="#!">Locations</a></li>
               <li><a href="#!">Docs</a></li>
             </ul>
           </div>
           <div class="col s6 m3">
             <h5>Connect</h5>
             <ul>
-              <li><a href="//blog.kariboo.cc">Community</a></li>
-              <li><a href="#!">Subscribe</a></li>
-              <li><a href="mailto:contact@kariboo.cc">Email</a></li>
+              <li><a href="#!">Communauté</a></li>
+              <li><a href="#!">Où nous voir</a></li>
+              <li><a href="mailto:contact@la-ruche.fr">Email</a></li>
             </ul>
           </div>
           <div class="col s6 m3">
             <h5>Contact</h5>
             <ul>
-                <li><a href="https://instagram.com/eg_julien">@eg_julien</a></li>
-                <li><a href="https://www.facebook.com/karyboooo">Karyboooo_fb</a></li>
-                <li><a href="https://github.com/EG-Julien">Github</a></li>
+                <li><a href="https://instagram.com/la_ruche">@la_ruche</a></li>
+                <li><a href="https://www.facebook.com/LaRuche33/">La Ruche</a></li>
+                <li><a href="mailto:contact@la-ruche.fr">contact@la-ruche.fr</a></li>
             </ul>
           </div>
         </div>
