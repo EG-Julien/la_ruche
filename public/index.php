@@ -23,7 +23,7 @@ try {
 
     \App\Controllers\Controller::setDB($DB);
 } catch (Exception $e) {
-   // $DB = die($e);
+   die($e);
 }
 
 $app->get('/', \App\Controllers\HomeCtrl::class . ':Home')->setName("home");
