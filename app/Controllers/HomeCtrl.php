@@ -18,7 +18,22 @@ class HomeCtrl extends Controller {
         $this->render($response, "Devis.twig");
     }
 
-    public function ContactUs($request, $response) {
+    public function Events($request, $response) {
+        $this->render($response, "Events.twig");
+    }
+
+    public function Contact($request, $response) {
         $this->render($response, "Contact.twig");
+    }
+
+    public function ListingMaterials($request, $response) {
+
+        $DB = self::getDB();
+
+        $this->rendre($response, "ListingMaterials.twig");
+    }
+
+    public function ContactUs($request, $response) {
+        return;
     }
 }
