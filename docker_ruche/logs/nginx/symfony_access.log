@@ -125,3 +125,4 @@
 172.19.0.1 - - [14/Feb/2020:11:00:08 +0000] "GET /js/init.js HTTP/1.1" 200 1193 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"
 172.19.0.1 - - [14/Feb/2020:11:00:08 +0000] "GET /js/startup.js HTTP/1.1" 200 35054 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"
 172.19.0.1 - - [14/Feb/2020:11:00:08 +0000] "GET /js/animation.gsap.min.js HTTP/1.1" 200 1288 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"
+172.19.0.1 - - [17/Feb/2020:10:03:22 +0000] "HEAD / HTTP/1.1" 200 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) DockerDesktop/2.1.1 Chrome/78.0.3904.94 Electron/7.1.0 Safari/537.36"

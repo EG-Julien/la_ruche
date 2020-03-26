@@ -11,7 +11,11 @@ class HomeCtrl extends Controller {
     }
 
     public function Whoareus($request, $response) {
-        $this->render($response, "Whoareus.twig");
+        $DB = self::getDB();
+        $q = $DB->prepare("SELECT * FROM teams");
+        $q->execute();
+        $teams = $q->fetchAll();
+        $this->render($response, "Whoareus.twig", compact($teams));
     }
 
     public function Devis($request, $response) {
@@ -30,7 +34,7 @@ class HomeCtrl extends Controller {
 
         $DB = self::getDB();
 
-        $this->rendre($response, "ListingMaterials.twig");
+        $this->render($response, "ListingMaterials.twig");
     }
 
     public function ContactUs($request, $response) {

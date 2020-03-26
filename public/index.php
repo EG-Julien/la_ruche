@@ -31,7 +31,7 @@ $app->get('/qui-sommes-nous', \App\Controllers\HomeCtrl::class . ':Whoareus')->s
 $app->get('/devis', \App\Controllers\HomeCtrl:: class . ':Devis')->setName("devis");
 $app->get('/contact', \App\Controllers\HomeCtrl::class . 'Contact')->setName("contact");
 $app->get('/events', \App\Controllers\HomeCtrl::class . 'Events')->setName("events");
-$app->get('/matos', \App\App\Controllers\HomeCtrl::class . 'ListingMaterials')->setName("listing");
+$app->get('/matos', \App\Controllers\HomeCtrl::class . 'ListingMaterials')->setName("listing");
 
 $app->post('/post/contact-us', \App\Controllers\PostCtrl::class . ':ContactUs')->setName("contact_us_post");
 
