@@ -12,10 +12,22 @@ class HomeCtrl extends Controller {
 
     public function Whoareus($request, $response) {
         $DB = self::getDB();
-        $q = $DB->prepare("SELECT * FROM teams");
-        $q->execute();
-        $teams = $q->fetchAll();
-        $this->render($response, "Whoareus.twig", compact($teams));
+
+        $data = array();
+        $posts = array();
+        $postsTemp = json_decode(json_encode($DB->query("SELECT * FROM posts")->fetchAll()), true);
+
+
+
+        foreach($postsTemp as $post){
+            $teammate = json_decode(json_encode($DB->query("SELECT * FROM teams WHERE posts='".$post['post']."'")->fetchAll()), true);
+            $post['teammates'] = $teammate;
+            array_push($posts, $post);
+        }
+
+        $data['posts']= $posts;
+
+        $this->render($response, "Whoareus.twig", $data);
     }
 
     public function Devis($request, $response) {

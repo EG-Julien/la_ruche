@@ -33,6 +33,24 @@ $app->get('/contact', \App\Controllers\HomeCtrl::class . 'Contact')->setName("co
 $app->get('/events', \App\Controllers\HomeCtrl::class . 'Events')->setName("events");
 $app->get('/matos', \App\Controllers\HomeCtrl::class . 'ListingMaterials')->setName("listing");
 
+$app->get('/admin/connection', \App\Controllers\AdminCtrl::class . ':Connection')->setName("connection");
+$app->post('/admin/connection', \App\Controllers\AdminCtrl::class . ':PostConnection');
+
+$app->get('/admin', \App\Controllers\AdminCtrl::class . ':Index')->setName("admin");
+
+$app->get('/admin/team/{id}', \App\Controllers\AdminCtrl::class . ':Team')->setName("adminTeamEdit");
+$app->get('/admin/team', \App\Controllers\AdminCtrl::class . ':Team')->setName("adminTeamAdd");
+$app->post('/admin/team/{id}', \App\Controllers\AdminCtrl::class . ':PostTeam');
+$app->post('/admin/team/', \App\Controllers\AdminCtrl::class . ':PostTeam');
+
+$app->get('/admin/equipment', \App\Controllers\AdminCtrl::class . ':Equipment')->setName("equipment");
+$app->post('/admin/equipment/modify/{id}', \App\Controllers\AdminCtrl::class . ':PostEquipment');
+$app->post('/admin/equipment/modify/', \App\Controllers\AdminCtrl::class . ':PostEquipment');
+$app->post('/admin/equipment/delete/{id}', \App\Controllers\AdminCtrl::class . ':DeleteEquipment');
+$app->post('/admin/configuration/modify/{id}', \App\Controllers\AdminCtrl::class . ':PostConfiguration');
+$app->post('/admin/configuration/modify/', \App\Controllers\AdminCtrl::class . ':PostConfiguration');
+$app->post('/admin/configuration/delete/{id}', \App\Controllers\AdminCtrl::class . ':DeleteConfiguration');
+
 $app->post('/post/contact-us', \App\Controllers\PostCtrl::class . ':ContactUs')->setName("contact_us_post");
 
 $app->run();

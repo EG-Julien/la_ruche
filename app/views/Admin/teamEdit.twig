@@ -1,0 +1,48 @@
+{% extends 'Admin/Template-admin.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Ajout/Modification d'un gens</h1>
+        <form action="/admin/team/{{ user.id }}" class="row" method="post" enctype="multipart/form-data">
+            <div class="col s12 l6">
+                <div class="row">
+                    <div class="input-field col s12 h1">
+                        <input id="name" type="text" class="" value="{{ user.name }}" required name="nameEdit">
+                        <label for="name">Nom</label>
+                    </div>
+                    <div class="col s12">
+                        <label>Post</label>
+                        {% for post in posts %}
+                            <p>
+                                <label>
+                                    <input name="post" type="radio" value="{{ post.post }}" {% if  post.post == user.posts %}checked{% endif %} />
+                                    <span>{{post.post}}</span>
+                                </label>
+                            </p>
+                        {% endfor %}
+                    </div>
+
+
+                    <div class="input-field col s12">
+                        <textarea id="description" class="materialize-textarea description-edit" name="descriptionEdit">{{ user.description }}</textarea>
+                        <label for="description">Description</label>
+                    </div>
+                </div>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Changer la photo</span>
+                        <input type="file" name="teamImg">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path" type="text" >
+                    </div>
+                </div>
+                <button class="but" type="submit">Enregistrer</button>
+            </div>
+            <div class="col s12 l6">
+                <img class="responsive-img center-align edit-img" src="{% if user.thumbnail is defined  and user.thumbnail != ""%}/images/profiles/humans/{{user.thumbnail}}{% endif %}">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,290 @@
+{% extends 'Admin/Template-admin.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1>Notre matériel</h1>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs black-bg">
+                    <li class="tab col s3"><a class="active global-style-color" href="#equipment">Matériel</a></li>
+                    <li class="tab col s3"><a class="global-style-color" href="#config">Configuration</a></li>
+                </ul>
+            </div>
+            <div id="equipment" class="col s12">
+                <p>
+                    <a class="waves-effect waves-light btn" href="#modalAdd">Ajouter un truc</a>
+                </p>
+                <div class="row">
+                    <table class="centered responsive-table highlight-admin">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Prix</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for equipment in equipments %}
+                            <tr class="global-border">
+                                <td>{{ equipment.id }}</td>
+                                <td>{{ equipment.name }}</td>
+                                <td>{{ equipment.description }}</td>
+                                <td>{{ equipment.type }}</td>
+                                <td>{{ equipment.price }}€</td>
+                                <td>
+                                    <a class="waves-effect waves-light btn"
+                                       href="#modalEdit{{ equipment.id }}">Modifier</a>
+                                    <a class="waves-effect waves-light red btn" href="#modalRemove{{ equipment.id }}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="config" class="col s12">
+                <p>
+                    <a class="waves-effect waves-light btn" href="#modalAddConf">Ajouter une configuration</a>
+                </p>
+                <div class="row">
+                    <table class="centered responsive-table highlight-admin">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Nombre de personnes</th>
+                            <th>Taille de la salle</th>
+                            <th>Prix</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for configuration in configurations %}
+                            <tr class="global-border">
+                                <td>{{ configuration.id }}</td>
+                                <td>{{ configuration.name }}</td>
+                                <td>{{ configuration.description }}</td>
+                                <td>{{ configuration.nbPerson }}</td>
+                                <td>{{ configuration.roomSize }}</td>
+                                <td>{{ configuration.price }}€</td>
+                                <td>
+                                    <a class="waves-effect waves-light btn" href="#modalConf{{ configuration.id }}">Modifier</a>
+                                    <a class="waves-effect waves-light red btn"
+                                       href="#modalRemoveConf{{ configuration.id }}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% for equipment in equipments %}
+        <div id="modalEdit{{ equipment.id }}" class="modal">
+            <div class="modal-content">
+                <form action="/admin/equipment/modify/{{ equipment.id }}" class="row" method="post"
+                      enctype="multipart/form-data">
+                    <div class="col s12 l6 offset-l3">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="name" type="text" class="global-style-color" value="{{ equipment.name }}"
+                                       required name="name">
+                                <label for="name" class="global-style-color">Équipement</label>
+                            </div>
+                            <div class="col s12">
+                                <label>Post</label>
+                                {% for type in types %}
+                                    <p>
+                                        <label>
+                                            <input name="type" type="radio" value="{{ type.type }}"
+                                                   {% if  type.type == equipment.type %}checked{% endif %} />
+                                            <span>{{ type.type }}</span>
+                                        </label>
+                                    </p>
+                                {% endfor %}
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="price" type="number" class="global-style-color" value="{{ equipment.price }}"
+                                       required name="price">
+                                <label for="name" class="global-style-color">Prix</label>
+                            </div>
+                            <div class="input-field col s12">
+                            <textarea id="description" class="materialize-textarea description-edit global-style-color"
+                                      name="description">{{ equipment.description }}</textarea>
+                                <label for="description" class="global-style-color">Description</label>
+                            </div>
+                        </div>
+                        <button class="waves-effect waves-light btn" type="submit">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+            </div>
+        </div>
+
+        <div id="modalRemove{{ equipment.id }}" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4 class="black-text">Supprimer {{ equipment.name }} ? </h4>
+            </div>
+            <div class="modal-footer">
+                <form action="/admin/equipment/delete/{{ equipment.id }}" method="post">
+                    <button class="modal-close waves-effect waves-light red btn">Supprimer</button>
+                </form>
+
+            </div>
+        </div>
+    {% endfor %}
+
+    <div id="modalAdd" class="modal">
+        <div class="modal-content">
+            <form action="/admin/equipment/modify/" class="row" method="post"
+                  enctype="multipart/form-data">
+                <div class="col s12 l6 offset-l3">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" class="global-style-color" value="{{ equipment.name }}"
+                                   required name="name">
+                            <label for="name" class="global-style-color">Équipement</label>
+                        </div>
+                        <div class="col s12">
+                            <label>Post</label>
+                            {% for type in types %}
+                                <p>
+                                    <label>
+                                        <input name="type" type="radio" value="{{ type.type }}"
+                                               {% if  type.type == equipment.type %}checked{% endif %} />
+                                        <span>{{ type.type }}</span>
+                                    </label>
+                                </p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="price" type="number" class="global-style-color" value="{{ equipment.price }}"
+                                   required name="price">
+                            <label for="name" class="global-style-color">Prix</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="description" class="materialize-textarea description-edit global-style-color"
+                                      name="description">{{ equipment.description }}</textarea>
+                            <label for="description" class="global-style-color">Description</label>
+                        </div>
+                    </div>
+                    <button class="waves-effect waves-light btn" type="submit">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+        </div>
+    </div>
+
+
+    {% for configuration in configurations %}
+        <div id="modalConf{{ configuration.id }}" class="modal">
+            <div class="modal-content">
+                <form action="/admin/configuration/modify/{{ configuration.id }}" class="row" method="post"
+                      enctype="multipart/form-data">
+                    <div class="col s12 l6 offset-l3">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="name" type="text" class="global-style-color" value="{{  configuration.name }}" required name="name">
+                                <label for="name" class="global-style-color">Configuration</label>
+                            </div>
+                            <div class="input-field col s12">
+                            <textarea id="description" class="materialize-textarea description-edit global-style-color"
+                                      name="description">{{ configuration.description }}</textarea>
+                                <label for="description" class="global-style-color">Description</label>
+                            </div>
+                            <div class="col s12">
+                                <label>Nombre de personne</label>
+                                <input id="person" type="number" class="global-style-color"
+                                       value="{{ configuration.nbPerson }}" required name="nbPerson">
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="roomsize" type="text" class="global-style-color"
+                                       value="{{ configuration.roomSize }}" name="roomSize">
+                                <label for="name" class="global-style-color">Taille de la salle</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="price" type="number" class="global-style-color" value="{{ configuration.price }}"
+                                       required name="price">
+                                <label for="name" class="global-style-color">Prix</label>
+                            </div>
+                        </div>
+                        <button class="waves-effect waves-light btn" type="submit">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+            </div>
+        </div>
+
+        <div id="modalRemoveConf{{ configuration.id }}" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4 class="black-text">Supprimer {{ configuration.name }} ? </h4>
+            </div>
+            <div class="modal-footer">
+                <form action="/admin/configuration/delete/{{ configuration.id }}" method="post">
+                    <button class="modal-close waves-effect waves-light red btn">Supprimer</button>
+                </form>
+
+            </div>
+        </div>
+    {% endfor %}
+
+    <div id="modalAddConf" class="modal">
+        <div class="modal-content">
+            <form action="/admin/configuration/modify/" class="row" method="post"
+                  enctype="multipart/form-data">
+                <div class="col s12 l6 offset-l3">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" class="global-style-color" value="" required name="name">
+                            <label for="name" class="global-style-color">Configuration</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="description" class="materialize-textarea description-edit global-style-color"
+                                      name="description">{{ equipment.description }}</textarea>
+                            <label for="description" class="global-style-color">Description</label>
+                        </div>
+                        <div class="col s12">
+                            <label>Nombre de personne</label>
+                            <input id="person" type="number" class="global-style-color" value="{{ equipment.nbPerson }}"
+                                   name="nbPerson" required>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="roomsize" type="text" class="global-style-color" value="{{ equipment.roomSize }}"
+                                   name="roomSize">
+                            <label for="name" class="global-style-color">Taille de la salle</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="price" type="number" class="global-style-color" value="{{ equipment.price }}"
+                                   required name="price">
+                            <label for="name" class="global-style-color">Prix</label>
+                        </div>
+                    </div>
+                    <button class="waves-effect waves-light btn" type="submit">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+        </div>
+    </div>
+{% endblock %}

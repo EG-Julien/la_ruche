@@ -1,201 +1,74 @@
 {% extends 'Template.twig' %}
 
 {% block content %}
-    <nav class="navbar dark navbar-solid-transition">
-        <div class="nav-wrapper">
-            <a href="{{ path_for("home") }}" class="brand-logo"><img src="images/logo.jpg" height="64px" /></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="{{ path_for("whoareus") }}">Qui somme nous ?</a></li>
-                <li><a href="{{ path_for("devis") }}">Devis</a></li>
-                <li><a href="#contact_form">Contact</a></li>
-            </ul>
-
-            <ul id="slide-out" class="side-nav">
-                <li class="no-padding">
-                    <ul class="collapsible collapsible-accordion">
-                        <li class="bold">
-                            <a class="collapsible-header waves-effect waves-teal active">Accueil</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="{{ path_for("whoareus") }}">Qui somme nous ?</a></li>
-                <li><a href="{{ path_for("devis") }}">Devis</a></li>
-                <li><a href="#contact_form">Contact</a></li>
-            </ul>
-
-            <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons black-text">menu</i></a>
-        </div>
-    </nav>
 
     <div class="section header white">
-      <div class="background">
-        <img src="images/team.jpg" alt="">
-      </div>
-      <div class="header-wrapper row valign-wrapper">
-        <div class="col s12 m6 offset-m3 valign">
-          <h1 style="color: #FFF;">Team!</h1>
-          <span style="color: #FFF;" class="tagline">Founded in 2015, we strive to be the best at what we do. This is made possible by our amazing team located around the world.</span>
+        <div class="background">
+            <img src="images/team.jpg" alt="">
         </div>
-      </div>
+        <div class="header-wrapper row valign-wrapper">
+            <div class="col s12 m6 offset-m3 valign">
+                <h1 style="color: #FFF;">Team!</h1>
+                <span style="color: #FFF;" class="tagline">Founded in 2015, we strive to be the best at what we do. This is made possible by our amazing team located around the world.</span>
+            </div>
+        </div>
     </div>
 
     <div class="section white full-height">
-      <div class="row valign">
-        <div class="col s12 m10 offset-m1 team">
+        <div class="row valign">
+            <div class="col s12 m10 offset-m1 team">
 
-          <div class="row">
-            <div class="col s12 l3 center-on-small-only">
-              <h3 class="section-title">DJ's</h3>
+                {% for post in posts %}
+                    <div class="row">
+                        <div class="col s12 l3 center-on-small-only">
+                            <h3 class="section-title">{{ post.team }}</h3>
+                        </div>
+
+                        <div class="col s12 l9">
+                            <div class="row">
+                                {% for teammate in post.teammates %}
+                                    <a class="global-style-color modal-trigger" href="#modal{{ teammate.id }}">
+                                        <div class="col s12 m4">
+                                            <div class="avatar-wrapper">
+                                            <span class="avatar">
+                                              <img src="{% if teammate.thumbnail is defined and teammate.thumbnail != ""%}/images/profiles/humans/{{teammate.thumbnail}}{% else %}http://placehold.it/256x256{% endif %}" alt="">
+                                            </span>
+                                            </div>
+                                            <div class="avatar-name">
+                                                <span class="name">{{ teammate.name }}</span>
+                                                <span class="title">{{ teammate.posts }}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
             </div>
-
-            <div class="col s12 l9">
-              <div class="row">
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">{{ teams }}</span>
-                    <span class="title">Founder</span>
-                  </div>
-                </div>
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">John Chang</span>
-                    <span class="title">Head of Sales</span>
-                  </div>
-                </div>
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">Charlotte Smith</span>
-                    <span class="title">Lead Sales</span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col s12">
-              <div class="divider"></div>
-            </div>
-            <div class="col s12 l3 center-on-small-only">
-              <h3 class="section-title">Régie son</h3>
-            </div>
-
-            <div class="col s12 l9">
-              <div class="row">
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">Jane Doe</span>
-                    <span class="title">Frontend Engineer</span>
-                  </div>
-                </div>
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">John Chang</span>
-                    <span class="title">Backend Engineer</span>
-                  </div>
-                </div>
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">Charlotte Smith</span>
-                    <span class="title">Database Engineer</span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="col s12">
-              <div class="divider"></div>
-            </div>
-            <div class="col s12 l3 center-on-small-only">
-              <h3 class="section-title">Régie lumières</h3>
-            </div>
-
-            <div class="col s12 l9">
-              <div class="row">
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">Jane Doe</span>
-                    <span class="title">Motion Designer</span>
-                  </div>
-                </div>
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">John Chang</span>
-                    <span class="title">Interaction Designer</span>
-                  </div>
-                </div>
-
-                <div class="col s12 m4">
-                  <div class="avatar-wrapper">
-                    <span class="avatar">
-                      <img src="http://placehold.it/256x256" alt="">
-                    </span>
-                  </div>
-                  <div class="avatar-name">
-                    <span class="name">Charlotte Smith</span>
-                    <span class="title">Senior Designer</span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
         </div>
-      </div>
     </div>
+
+
+    {% for post in posts %}
+        {% for teammate in post.teammates %}
+            <div id="modal{{ teammate.id }}" class="modal" style="width: 35%">
+                <div class="modal-content">
+                    <h4 class="grey-text text-darken-1">{{ teammate.name }}</h4>
+                    <hr class="global-border">
+                    <div class="center">
+                        <img class="responsive-img modal-img" src="{% if teammate.thumbnail is defined and teammate.thumbnail != ""%}/images/profiles/humans/{{teammate.thumbnail}}{% else %}http://placehold.it/256x256{% endif %}">
+                    </div>
+                    <hr class="global-border">
+                    <p class="black-text" style="font-size: 1.1rem">{{ teammate.description }}</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
 
 {% endblock %}

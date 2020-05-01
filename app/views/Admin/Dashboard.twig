@@ -1,0 +1,33 @@
+{% extends 'Admin/Template-admin.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1>La team</h1>
+        </div>
+        <a class="waves-effect waves-light btn" href="{{ path_for("adminTeamAdd") }}"><i class="material-icons left">add_to_photos</i>Ajouter un gens</a>
+        <div class="row">
+            {% for user in users %}
+                <div class="col s3">
+                    <div class="card global-style-bg sticky-action">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator circle responsive-img card-img"
+                                 src="/images/profiles/humans/{{ user.thumbnail }}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator">{{ user.name }}<i
+                                        class="material-icons right">more_vert</i></span></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title black-text">{{ user.name }}<i class="material-icons right">close</i></span>
+                            <p class="black-text">{{ user.description }}</p>
+                        </div>
+                        <div class="card-action card-action-style">
+                            <a href="{{ path_for("adminTeamEdit", {id: user.id}) }}" class="grey-text text-lighten-2">Editer</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
